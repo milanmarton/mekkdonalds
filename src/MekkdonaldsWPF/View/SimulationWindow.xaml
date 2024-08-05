@@ -1,0 +1,57 @@
+﻿<Window x:Class="Mekkdonalds.View.SimulationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Mekkdonalds.View"
+        xmlns:viewmodel="clr-namespace:Mekkdonalds.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:SimulationViewModel}"
+        mc:Ignorable="d"
+        Title="Mekkdonalds" Width="1540" Height="800">
+    <Window.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <ScrollViewer x:Name="ScrollViewer" Grid.Column="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" PanningMode="Both">
+                <Canvas x:Name="MapCanvas" Margin="5,5,5,5"/>
+            </ScrollViewer>
+            <Grid Grid.Column="1">
+                <Button Margin="50,0,50,0" Height="40" Content="Save log"/>
+                <!--#region Speed control-->
+                <Label Content="{Binding SpeedLabel}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,70,0"/>
+                <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="25" Width="25" Margin="0,0,40,0"
+                        Padding="0" Content="-" FontSize="20" Style="{StaticResource ButtonStyle}"
+                        Command="{Binding SpeedDown}"/>
+                <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="25" Width="25" Margin="0,0,10,0"
+                        Padding="0" Content="+" FontSize="20" Style="{StaticResource ButtonStyle}"
+                        Command="{Binding SpeedUp}"/>
+                <!--#endregion-->
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Button Width="35" Height="35" Margin="10,0,0,0" HorizontalAlignment="Left"
+                    Command="{Binding Play}" Style="{StaticResource ButtonStyle}"
+                    Content="▶" FontSize="20"
+                    />
+            <Button Width="35" Height="35" Margin="50,0,0,0" HorizontalAlignment="Left"
+                    Command="{Binding Pause}" Style="{StaticResource ButtonStyle}"
+                    Content="❚❚" FontSize="20"
+                    />
+            <Button Width="35" Height="35" Margin="90,0,0,0" HorizontalAlignment="Left"
+                    Command="{Binding Forward}" FontWeight="Bold" Style="{StaticResource ButtonStyle}"
+                    Content="↻" FontSize="25"
+                    />
+        </Grid>
+    </Grid>
+</Window>
