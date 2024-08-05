@@ -1,5 +1,7 @@
 # MekkDonalds
 
+The project was copy/pasted from my university's own GitLab server and there are differences between Github's and GitLab's CI/CD implementations, so as of right now the CI/CD is not working.
+
 [Documentation](https://szofttech-ab-2024.szofttech.gitlab-pages.hu/group-07/csapat3)
 
 ## Installation
